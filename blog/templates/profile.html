@@ -1,0 +1,88 @@
+{% extends "blog.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <!--bg of description-->
+        <nav class="bg-gradient border-bottom border-1 m-2" style="background-color: rgba(0, 50, 71, 0.804);">
+        <div class="d-flex" >
+            <img class="mx-auto align-items-center " style="width: 100%; height: 200px;"
+             src="{{ info[2] }}" alt="" srcset="">
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div>
+            <img class="rounded-circle border border-2 " style=" position: absolute; left: 5em; top: 13em; width: 10vw; height: 10vw;" 
+            src="{{ info[1]}}" alt="">
+            </div>
+            <h4 class=" fst-italic mt-2 align-bottom text-light"> {{ info[0] }}</h4>
+            <p class="text-light p-3 m-2"> {{ info[4] }} </p>
+            <button class="profileadd rounded-2 p-2 m-2 bg-opacity-50 bg-light" >
+                Edit profile<i class="fa fa-pencil ms-2" aria-hidden="true"></i>
+            </button>
+        </div>
+        </nav>
+
+        <div class="changeprofile ">
+
+        </div>
+
+    <!--page-->
+ <div class="align-items-center mx-auto m-4 bg-opacity-25 bg-success border rounded-3" style=" width: 80%;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-75 rounded-3 p-3" >
+         <div class="container-fluid">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link text-dark {% if active_page == 'profile' %}active{% endif %}" aria-current="page" href="/profile">Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark  {% if active_page == 'contacts' %}active{% endif %}" href="/others?page=contacts">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark  {% if active_page == 'about' %}active{% endif %}" href="/others?page=about" >About</a>
+            </li>
+            
+        </ul>
+        </div>
+    </nav>
+
+   <!--posts-->
+    {% for i in post %}
+    <div class="card text-center  mx-auto m-3" style="width: 90%; background-color: cadetblue;">
+      <div class="card-body">
+
+    <div class="d-flex align-items-center p-1 bg-success bg-opacity-25 m-0">  
+        <img class="rounded-circle border border-1 m-2" src="{{ info[1] }}" alt="" style="width: 3em;">
+        <h5 class="fst-italic fw-normal align-middle pt-2"> {{ i.username }} </h5>
+     </div>
+
+        <h5 class="card-title"> {{ i.title }} </h5>
+        <p class="card-text"> {{ i.desc }} </p>
+        <div class="d-flex justify-content-between"><p class="border border-1 col-2 bg-success bg-opacity-50"> {{ i.topic }} </p>
+        <p><i class="fa fa-calendar" aria-hidden="true"></i> {{ i.time }} </p></div>
+       </div>
+      <img class="m-2" src=" {{ i.pic }} " class="card-img-top" alt="...">
+     <!--comment-->
+   
+
+    </div>
+    {% endfor %}
+
+    <!--about-->
+   <div class="text-light m-2 p-3 text-center align-items-center mx-auto" style="width: 70%;">
+    {% if active_page== 'about' %}
+    {{ info[3] }}
+    {% endif %}
+
+    {% if active_page== 'contacts' %}
+    <h5 >To contact me click on the link below</h5> <br>
+    <p><a class="fw-bold text-decoration-none text-success" href="{{ info[5] }}">{{ info[5] }}</a> </p>
+    {% endif %}
+   </div>
+</div> 
+
+   
+
+{% endblock %}

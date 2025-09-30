@@ -1,0 +1,31 @@
+{% extends "blog.html" %}
+
+{% block title %}
+    Forgot Password
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="m-3 d-flex align-items-center flex-column text-center justify-content-md-center">
+                <nav class="nav m-0 flex-column bg-secondary bg-gradient bg-opacity-25 p-4 ">
+                <h2 class="m-2 p-2">Change your password!</h2>
+            <!--sign in form--> 
+            {% if code == change %}
+                <div class="visible m-4"><form action="/check" method="post">
+                    <input class="px-5 p-1 m-3" type="text" required name="name" placeholder="Enter your username"><br>
+                    <input class="px-5 p-1 m-3" type="text" required name="email" placeholder="Enter your Email"><br>
+                    <button type="submit" class="check  bg-success px-4 m-3 rounded-5">Check</button>
+                </form></div>
+             {% elif code == none %}   
+                <!--change password-->
+                <div class="hidden  m-4"> <form action="/check" method="post">
+                    <h4 class="m-2 p-2"><small>Create new password!</small></h4>
+                    <input class="px-5 p-1 m-3" type="text" required name="newpass" placeholder="New-password"><br>
+                    <input class="px-5 p-1 m-3" type="text" required name="confirmpass" placeholder="Confirm-Password"> <br>
+                    <button type="submit" class="text-dark bg-success px-4 m-3 rounded-5">Submit </button>
+                </form></div>
+            {% endif %}
+                </nav>
+    </div>
+{% endblock %}

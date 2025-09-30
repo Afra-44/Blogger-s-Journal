@@ -1,0 +1,61 @@
+*{
+    font-size: 1.3vw;
+    
+}
+body{
+    background:  linear-gradient(260deg, rgb(8, 1, 56,1) , rgb(53, 4, 96,1) , rgb(74, 3, 74,1) );
+    height: 100%;
+}
+section{
+    font-family: 'Courier New', Courier, monospace;
+}
+.post{
+     margin-top: 2em;
+    margin-left: 18rem;
+}
+.simg{
+    position: absolute ; 
+    width: 20vw;
+    height: 25vw;
+    border-radius: 3px 3px 3px;
+    box-shadow: 4px 2px 2px rgba(0, 0, 0, 0.386);
+}
+.img-3{
+     
+    top: 8em;
+    left: 11em;
+}
+.img-2{
+     
+     top: 2em;
+    left: 20em;
+}
+.img-1{
+    
+     top: 5em;
+    left: 2em;
+}
+.nav{
+    width: 50%;
+    height: 100%;
+}
+.login{
+    align-items: end;
+}
+.login h2{
+   color: rgb(3, 207, 112);
+   text-shadow: 2px 2px black;
+}
+
+@media only screen and (max-width: 768px){
+.simg{
+    display: none;
+}
+.login{
+    align-items: center;
+}
+body{
+    align-items: center;
+}
+}
+ 

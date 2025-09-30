@@ -1,0 +1,24 @@
+{% extends "blog.html" %}
+
+{% block title %}
+    SignUp
+{% endblock %}
+
+{% block main %}
+ 
+    <!--signup-->
+    <div class="m-3 d-flex align-items-center flex-column text-center justify-content-md-center">
+                <nav class="nav m-0 flex-column bg-secondary bg-gradient bg-opacity-25 p-4 ">
+                <h1 class="m-2 p-2">Sign Up</h1>
+                <!--sign in form-->
+                <div class="m-4"><form action="/signup" method="post">  
+                    <input class="px-5 p-1 m-3" required type="email" name="email" placeholder="Email"><br>
+                    <input class="px-5 p-1 m-3" required type="text" name="name" placeholder="User-name"> <br>                    
+                    <input class="px-5 p-1 m-3" required type="password" name="password" placeholder="Password"> <br>                   
+                    <input class="px-5 p-1 m-3" required type="password" name="confirm-password" placeholder="Confirm-Password"> <br>
+                    <button type="submit" class="text-dark bg-success px-4 m-3 rounded-5">Sign Up</button></div>
+                </form>
+                </nav>
+    </div>
+        
+{% endblock %}

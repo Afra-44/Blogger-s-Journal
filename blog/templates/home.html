@@ -1,0 +1,105 @@
+{% extends "blog.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<!--body-->
+  <!--for main home -->
+  {% if active_page== 'home' %}
+  <section class="text-light " >
+    <div class="align-items-center p-2 mx-auto text-center d-flex justify-content-md-center" style="height: 40vw; background-color: rgba(0, 50, 71);">
+      <div class="mx-auto"><h3 class="p-3 m-2">Welcome to Blogger's Journal</h3>
+      <p class="p-2 lh-lg">Here you can explore new ideas, inspiring stories, and expert tips to fuel your passion,<br>
+        From all across the world!!<i class="fa fa-globe text-success" aria-hidden="true"></i></p>
+      </div>
+    </div>
+
+    <div class="align-items-center text-center d-flex " style="height: 40vw; background:  cadetblue ;">
+      <div class="col-5 m-4">
+      <h4>You can browse different categories and find what interests you the best!</h4>
+      <a href="/article" class="m-3"><button>Explore more!</button></a></div>
+      <div class="p-2 " style="height: 100%;">
+        <h5 class="m-4">Whether you like Travelling, Fashion or maybe Technology,<br> You'll find everything right here!</h5>
+      <img class="rounded-3 z-1 shadow-lg" style=" position: absolute; left: 74vw;width: 20vw; height: 25vw;" src="https://a.storyblok.com/f/112937/568x400/686f87dc2f/50-things-you-need-to-do-on-your-next-trip_square-568x400.jpg/m/620x0/filters:quality(70)/" alt="">
+      <img class="rounded-3 z-2 shadow-lg" style="width: 20vw; height: 25vw;" src="https://d1fufvy4xao6k9.cloudfront.net/images/blog/posts/2024/02/how-to-find-your-personal-style.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="align-items-center text-center d-flex " style="height: 40vw; background-color: rgb(14, 95, 84);">
+      <img class="col-5 m-0 rounded-end-circle" style="height: 40vw;" src="https://images.squarespace-cdn.com/content/v1/648cc7335ef15a10a43b443f/1699453919559-0QDWD5KIPIU0K64HO1TR/9GridFreebie-Mockup03.jpg?format=1000w" alt="">
+      <div class="mx-auto">
+      <h4>You can also create your own blog article.<br> Its just a click away!!!</h4>
+      <a href="/signin"><button class="m-3">Create one now!</button></a>
+       
+    </div>
+    </div>
+  </section>
+  {% endif %}
+
+
+    <!--sidebar-->
+    <!--for article-------------->
+    {% if active_page== 'article' %}
+    <div class="list-group col-2 fixed-top  z-1" style="height: 100%; top: 7rem; width: 20%; ">
+        <a href="#" class="p-3 list-group-item list-group-item-action list-group-item-success bg-opacity-50 text-light" style="background-color: rgb(0, 50, 71);">
+          <h3>Category</h3></a>
+        
+        <a href="/topic?topic=Travel" class="list-group-item list-group-item-action list-group-item-success">Travel</a>
+        <a href="/topic?topic=Fashion" class="list-group-item list-group-item-action list-group-item-success">Fashion</a>
+        <a href="/topic?topic=Tech" class="list-group-item list-group-item-action list-group-item-success">Technology</a>
+        <a href="/topic?topic=Education" class="list-group-item list-group-item-action list-group-item-success">Education</a>
+        <a href="/topic?topic=Food" class="list-group-item list-group-item-action list-group-item-success">Food</a>
+        <a href="/topic?topic=Buissness" class="list-group-item list-group-item-action list-group-item-success">Buissness</a>
+        <a href="/topic?topic=Health" class="list-group-item list-group-item-action list-group-item-success">Health & Wellness</a>
+        <a href="/topic?topic=Others" class="list-group-item list-group-item-action list-group-item-success">Others</a>
+        <li ></li>
+    </div>
+    {% endif %}
+
+  <!-- posts-->
+   <!--for article---------->
+{% for i in post %} 
+    <div class="post card text-center" style="width: 70%; background-color: cadetblue;">
+     <div class="card-body ">
+        
+       <div class="d-flex align-items-center m-0"> 
+        <img class="rounded-circle border border-1 m-2" src="{{ i.info[1] }}" alt="" style="width: 3em; height: 3em;">
+        <h5 class="fst-italic fw-normal align-baseline pt-2"> {{ i.username }}  </h5>
+      </div>
+      <hr>
+      
+        <h5 class="card-title m-2">{{ i.title }}</h5>
+        <p class="card-text"> {{ i.desc }} </p>
+        
+        <div class="d-flex justify-content-between"><p class="border border-1 col-2 bg-success bg-opacity-50"> {{ i.topic }} </p>
+        <p><i class="fa fa-calendar" aria-hidden="true"></i> {{ i.time }} </p></div>
+      </div>
+      <img class="m-2" src=" {{ i.pic }} " class="card-img-top" style="height: 30vw;" alt="...">
+      
+    </div>
+    {% endfor %}
+
+  <!-- no more posts-->
+  {% if active_page== 'article' %}
+    <div class="d-flex justify-content-md-center m-3 al mx-auto">
+      <hr>
+    <h3 class="text-center mx-auto text-secondary">No posts to show</h3>
+    </div>
+
+    <!--create --><!--ADD-->
+    {% if session["username"] %}
+      <button id="added" class="add fixed-bottom  z-1 rounded-circle p-4 m-2 align-items-center" style="left: 70rem; width: 5em;background-color: cadetblue;">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button> 
+    {% endif %}
+    <!---end of article------->{% endif %}
+      <div class="newpost" >
+      </div>
+  
+
+    <!---for profileeeee---------->
+    
+{% endblock %}
